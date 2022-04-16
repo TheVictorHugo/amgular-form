@@ -1,1 +1,60 @@
-<p>Teste</p>
+<div class="jumbotron text-center">
+  <h1>
+    Angular 13 Reactive Forms Tutorial
+  </h1>
+</div>
+
+
+<div class="container">
+  <div class="row custom-wrapper">
+    <div class="col-md-12">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+       
+        <div class="group-gap"> 
+
+          <!-- Upload image -->
+           <div class="avatar-upload">
+             <div class="avatar-edit">
+               <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+               <label for="'imageUpload" *ngIf="editFile" [ngClass]="['custom-label', 'upload-image']"></label>
+               <label *ngIf="removeUpload" [ngClass]="['custom-label', 'remove-image']" (click)="removeUploadedFile()"></label>
+             </div>
+             <div class="avatar-preview">
+               <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+               </div>
+             </div>
+           </div>
+
+           <!-- Full Name -->
+           <div formGroupName="fullname">
+             <div class="mb-3">
+               <label [ngClass]="{'error': submitted}"> First Name</label>
+               <input type="text" class="form-control"  formControName="fistName" [ngClass]="{'error': submitted}">
+               <div class="invalid-feedback" *ngIf="submitted">
+                  <sup>*</sup> Enter your name
+               </div>
+               <div class="invalid-feedback" *ngIf="submitted">
+                  <sup>*</sup> Name must be 2 characters long
+               </div>
+               <div class="invalide-feedback" *ngIf="submitted">
+                  <sup>*</sup> No special charter allwed
+               </div>
+             </div>
+
+             <div class="mb-3">
+                <label [ngClass]="{'error': submitted}">
+                  Laste name
+                </label>
+                <input type="text" class="form-control" formControlName="lastName" [ngClass]="{'error': submitted}">
+                <div class="invalide-feedback" *ngIf="submitted"> 
+                  <sup>*</sup> Please enter your surname
+                </div>
+              </div>
+           </div>
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
